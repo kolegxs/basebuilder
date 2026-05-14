@@ -5,11 +5,12 @@ import { ChatPanel } from "@/components/ChatPanel";
 import { WalletPanel } from "@/components/WalletPanel";
 import { ActionsPanel } from "@/components/ActionsPanel";
 import { PortfolioPanel } from "@/components/PortfolioPanel";
+import { MultiAgentPanel } from "@/components/MultiAgentPanel";
 import { Header } from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
 import { ConversationSidebar } from "@/components/ConversationSidebar";
 
-export type ActiveTab = "chat" | "wallet" | "actions" | "portfolio";
+export type ActiveTab = "chat" | "wallet" | "actions" | "portfolio" | "multi-agent";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<ActiveTab>("chat");
@@ -55,6 +56,7 @@ export default function Home() {
           {activeTab === "wallet" && <WalletPanel />}
           {activeTab === "actions" && <ActionsPanel />}
           {activeTab === "portfolio" && <PortfolioPanel />}
+          {activeTab === "multi-agent" && <MultiAgentPanel />}
         </main>
       </div>
     </div>

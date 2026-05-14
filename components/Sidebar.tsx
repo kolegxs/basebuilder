@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageSquare, Wallet, Layers, BarChart2, ExternalLink as GithubIcon } from "lucide-react";
+import { MessageSquare, Wallet, Layers, BarChart2, Zap, ExternalLink as GithubIcon } from "lucide-react";
 import clsx from "clsx";
 import type { ActiveTab } from "@/app/page";
 
@@ -9,12 +9,19 @@ interface SidebarProps {
   setActiveTab: (tab: ActiveTab) => void;
 }
 
-const tabs: { id: ActiveTab; label: string; icon: React.ElementType; description: string }[] = [
+const tabs: { id: ActiveTab; label: string; icon: React.ElementType; description: string; badge?: string }[] = [
   {
     id: "chat",
     label: "Agent Chat",
     icon: MessageSquare,
     description: "Talk to your AI agent",
+  },
+  {
+    id: "multi-agent",
+    label: "Multi-Agent",
+    icon: Zap,
+    description: "Orchestrated agents",
+    badge: "New",
   },
   {
     id: "portfolio",
@@ -63,8 +70,15 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
                   isActive ? "text-[#3b82f6]" : "text-[#475569] group-hover:text-[#64748b]"
                 )}
               />
-              <div className="min-w-0">
-                <div className="text-sm font-medium leading-tight truncate">{tab.label}</div>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-sm font-medium leading-tight truncate">{tab.label}</span>
+                  {tab.badge && (
+                    <span className="text-[8px] px-1 py-0.5 rounded bg-[#0052ff]/20 text-[#3b82f6] border border-[#0052ff]/30 font-bold shrink-0">
+                      {tab.badge}
+                    </span>
+                  )}
+                </div>
                 <div className="text-[10px] text-[#475569] truncate mt-0.5">{tab.description}</div>
               </div>
               {isActive && (
