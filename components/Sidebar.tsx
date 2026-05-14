@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageSquare, Wallet, Layers, ExternalLink as GithubIcon } from "lucide-react";
+import { MessageSquare, Wallet, Layers, BarChart2, ExternalLink as GithubIcon } from "lucide-react";
 import clsx from "clsx";
 import type { ActiveTab } from "@/app/page";
 
@@ -15,6 +15,12 @@ const tabs: { id: ActiveTab; label: string; icon: React.ElementType; description
     label: "Agent Chat",
     icon: MessageSquare,
     description: "Talk to your AI agent",
+  },
+  {
+    id: "portfolio",
+    label: "Portfolio",
+    icon: BarChart2,
+    description: "Live onchain balances",
   },
   {
     id: "wallet",
